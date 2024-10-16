@@ -1,16 +1,31 @@
-# This is a sample Python script.
+import cairo
+import math
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    surface =cairo.ImageSurface(cairo.FORMAT_RGB24, 700, 750)
+    context = cairo.Context(surface)
+    context.set_source_rgb(0.8, 0.8, 0.8)
+    context.paint()
+
+    context.set_source_rgb(0, 0, 1)
+    context.set_line_width(5)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
+    context.move_to(100, 350)
+    context.line_to(600, 350)
+    context.line_to(600, 450)
+    context.line_to(550, 450)
+    context.line_to(550, 700)
+    context.line_to(150, 700)
+    context.line_to(150, 450)
+    context.line_to(100, 450)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    context.close_path()
+    context.stroke()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    surface.write_to_png('test.png')
+
+if __name__ == "__main__":
+    main()
+
