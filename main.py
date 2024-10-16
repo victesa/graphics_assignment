@@ -27,10 +27,25 @@ def main():
 
     context.close_path()
     context.stroke()
-    #crescent gradient
-gradient = cairo.LinearGradient(450, 100, 450, 140)
-gradient.add_color_stop_rgb(0, 1, 1, 0)
-gradient.add_color_stop_rgb(1, 0.9, 0.7, 0)
+    context.arc(320, 370, 5, 0, 2 * math.pi)
+    context.set_source_rgb(0, 0, 1)
+    context.fill_preserve()
+    context.set_source_rgb(0, 0, 0.5)
+    context.set_line_width(3)
+    context.stroke()
+    
+    gradient = cairo.LinearGradient(450, 100, 450, 140)
+    gradient.add_color_stop_rgb(0, 1, 1, 0)
+    gradient.add_color_stop_rgb(1, 0.9, 0.7, 0)
+    
+    
+    context.set_source(gradient)
+    context.set_line_width(1)
+    context.arc_negative(450, 100, 40, 5 * math.pi / 4, math.pi / 4)
+    context.curve_to(450, 125, 420, 120, 422, 70)
+    context.fill_preserve()
+    context.set_source_rgb(0, 0, 1) 
+    context.stroke()
 
 
 
